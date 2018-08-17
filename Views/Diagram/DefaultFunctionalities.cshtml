@@ -1,0 +1,133 @@
+@using Syncfusion.EJ2.Diagrams;
+@section ControlsSection{
+    <div class="control-section">
+        <div style="width:100%">
+            <div id="palette-space" style="width:240px;height:100%; float:left">
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette)
+.GetSymbolInfo("getSymbolInfo")
+.ExpandMode("Multiple")
+.Width("100%")
+.Height("700px")
+.SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 })
+    .SymbolHeight(60)
+    .SymbolWidth(60)
+    .GetNodeDefaults("getSymbolNodes").Render()
+                )
+            </div>
+            <div id="diagram-space" style="width:calc(100% - 242px);height:100%; float:left">
+                @(Html.EJS().Diagram("container")
+    .Width("100%")
+    .Height("700px")
+    .SnapSettings(s => s.HorizontalGridlines(ViewBag.gridLines).VerticalGridlines(ViewBag.gridLines))
+    .Mode(Syncfusion.EJ2.Diagrams.RenderingMode.SVG)
+    .GetNodeDefaults("getNodeDefaults")
+    .GetConnectorDefaults("getConnectorDefaults")
+    .Nodes(ViewBag.nodes)
+    .Connectors(ViewBag.connectors).Render()
+                )
+
+            </div>
+        </div>
+    </div>
+    <style>
+        #container {
+            display: block;
+        }
+
+        #symbolPalette {
+            display: block;
+        }
+    </style>
+    <script>
+
+        function getNodeDefaults(obj, diagram) {
+            if (obj.width === undefined) {
+                obj.width = 145;
+            } else {
+                var ratio = 100 / obj.width;
+                obj.width = 100;
+                obj.height *= ratio;
+            }
+            obj.style = { fill: '#357BD2', strokeColor: 'white' };
+
+            //Set ports
+            obj.ports = getPorts(obj);
+            return obj;
+        }
+
+        var segments1 = [{ direction: 'Top', length: 120, type: 'Orthogonal' }];
+        var segments2 = [{ direction: 'Right', length: 100, type: 'Orthogonal' }];
+
+        function getConnectorDefaults(obj, diagram) {
+            if (obj.id === 'connector9') {
+                obj.segments = segments1;
+            }
+            if (obj.id === 'connector10') {
+                obj.segments = segments2;
+            }
+
+            if (obj.id.indexOf('connector') !== -1) {
+                obj.type = 'Orthogonal';
+                obj.targetDecorator = { shape: 'Arrow', width: 10, height: 10 };
+            }
+        }
+
+        function getPorts(obj) {
+            var ports = [
+       { id: 'port1', shape: 'Circle', offset: { x: 0, y: 0.5 } },
+       { id: 'port2', shape: 'Circle', offset: { x: 0.5, y: 1 } },
+       { id: 'port3', shape: 'Circle', offset: { x: 1, y: .5 } },
+       { id: 'port4', shape: 'Circle', offset: { x: .5, y: 0 } }
+            ];
+            return ports;
+
+        }
+
+        function getSymbolNodes(symbol, diagram) {
+            if (symbol.id === 'Terminator' || symbol.id === 'Process') {
+                symbol.width = 80;
+                symbol.height = 40;
+            }
+            else if (symbol.id === 'Decision' || symbol.id === 'Document' || symbol.id === 'PreDefinedProcess' ||
+                symbol.id === 'PaperTap' || symbol.id === 'DirectData' || symbol.id === 'MultiDocument' || symbol.id === 'Data') {
+                symbol.width = 50;
+                symbol.height = 40;
+            }
+            else {
+                symbol.width = 50;
+                symbol.height = 50;
+            }
+            symbol.style.strokeWidth = 2;
+        }
+
+        function getSymbolInfo(symbol) {
+            return { fit: true };
+        }
+
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the processing of an order placed using credit card with built-in flow shapes.
+    </p>
+}
+@section Description{
+    <p>
+        This example shows how to create a simple flow chart using the diagram control. The <code>nodes</code> property
+        can be used to define different stages of a process. To define the flow between different stages, the
+        <code>connectors</code> property can be used. The <code>getNodeDefaults</code> and
+        <code>getConnectorDefaults</code> properties define the default behavior of shapes and connectors.
+    </p>
+
+    <p>
+        To easily build flow diagrams, few shapes are predefined and added to symbol palette. You can drag-and-drop
+        predefined shapes into the drawing area. The <code>symbols</code> property allows you to add predefined
+        symbols to the palette.
+    </p>
+
+    <p>
+        In this example, undo and redo support is enabled.
+    </p>
+
+    <br>
+}

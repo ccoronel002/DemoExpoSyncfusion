@@ -1,0 +1,281 @@
+<InstallInfo>
+  <EssentialStudios>
+    <EssentialStudio Version="16.2.0.41">
+      <Keys>
+        <Key>@31362e322e30lpl64gsS/ItxjURzX8lX+FBkoyMdwFYIJhLu1nuzIIU=</Key>
+        <Key>@31362e322e30NtY8qFUoWKchIGC3CCWBqTHBPNyVwQuzcJoT7G1TJMg=</Key>
+        <Key>@31362e322e30fUV6ZuOJzJ2CSCALu/m8fCljTTD10j3G+gqYSCuHXiA=</Key>
+      </Keys>
+      <InstalledPath>C:\Program Files (x86)\Syncfusion\Essential Studio\ASP.NET MVC - EJ2\16.2.0.41\</InstalledPath>
+      <InstalledPlatforms>JavaScript - EJ2,ASP.NET MVC - EJ2,ASP.NET</InstalledPlatforms>
+      <SourcePlatforms>
+      </SourcePlatforms>
+      <LicenseNotEnforced>JavaScript - EJ2,ASP.NET MVC - EJ2,ASP.NET</LicenseNotEnforced>
+      <LicenseEnforced>
+      </LicenseEnforced>
+      <SamplePath>C:\Users\Public\Documents\Syncfusion\ASP.NET MVC - EJ2\16.2.0.41\</SamplePath>
+    </EssentialStudio>
+  </EssentialStudios>
+  <CurrentTargetFrameworkVersion>
+  </CurrentTargetFrameworkVersion>
+  <Framework40>
+    <Version>4.7.03056</Version>
+    <ServicePack>
+    </ServicePack>
+    <MSBuild>C:\Windows\Microsoft.NET\Framework\v4.0.30319\Msbuild.exe</MSBuild>
+    <PublicAssmeblies>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\PublicAssemblies</PublicAssmeblies>
+  </Framework40>
+  <Framework35>
+    <Version>3.5.30729.4926</Version>
+    <ServicePack>1</ServicePack>
+    <MSBuild>C:\Windows\Microsoft.NET\Framework\v3.5\Msbuild.exe</MSBuild>
+    <PublicAssmeblies>
+    </PublicAssmeblies>
+  </Framework35>
+  <Framework20>
+    <Version>2.0.50727.4927</Version>
+    <ServicePack>2</ServicePack>
+    <MSBuild>C:\Windows\Microsoft.NET\Framework\v2.0.50727\Msbuild.exe</MSBuild>
+    <PublicAssmeblies>
+    </PublicAssmeblies>
+  </Framework20>
+  <OS>
+    <OSName>Windows 10</OSName>
+    <ServicePack>
+    </ServicePack>
+    <Version>6.2.9200.0</Version>
+    <Architecture>x64</Architecture>
+    <OSLanguage>Spanish (Spain, International Sort)</OSLanguage>
+  </OS>
+  <SDK>
+    <VS2015>
+    </VS2015>
+    <VS2013>C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\</VS2013>
+    <VS2012>C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\</VS2012>
+    <VS2010>
+    </VS2010>
+    <VS2008>
+    </VS2008>
+    <VS2005>
+    </VS2005>
+    <VS2017GAC>
+    </VS2017GAC>
+    <VS2015GAC>
+    </VS2015GAC>
+    <VS2013GAC>C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\gacutil.exe</VS2013GAC>
+    <VS2012GAC>C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\gacutil.exe</VS2012GAC>
+    <VS2010GAC40>
+    </VS2010GAC40>
+    <VS2010GAC20>
+    </VS2010GAC20>
+    <VS2008GAC>
+    </VS2008GAC>
+    <VS2005GAC>
+    </VS2005GAC>
+    <Silverlight5>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\</Silverlight5>
+    <Silverlight4>
+    </Silverlight4>
+    <Silverlight3>
+    </Silverlight3>
+    <Windows10>C:\Program Files (x86)\Windows Kits\10\</Windows10>
+    <Windows10SDKVersion>10.0.17134.0</Windows10SDKVersion>
+    <ASPNETCore2015RC2orHigher>
+    </ASPNETCore2015RC2orHigher>
+    <ASPNETCore20>Microsoft .NET Core SDK - 2.1.201 (x64) 2.1.201</ASPNETCore20>
+  </SDK>
+  <VSIDE>
+    <VS2017>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe</VS2017>
+    <VS2017UpdateVersion>15.7.27703.2026</VS2017UpdateVersion>
+    <VS2015>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe</VS2015>
+    <VS2015Update1>
+    </VS2015Update1>
+    <VS2015Update3>
+    </VS2015Update3>
+    <VCSExpress2015>
+    </VCSExpress2015>
+    <VBExpress2015>
+    </VBExpress2015>
+    <VWDExpress2015>
+    </VWDExpress2015>
+    <VSWinExpress2015>
+    </VSWinExpress2015>
+    <WDExpress2015>
+    </WDExpress2015>
+    <VS2013>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe</VS2013>
+    <VS2013Update1>
+    </VS2013Update1>
+    <VS2013Update2>
+    </VS2013Update2>
+    <VS2013Update3>
+    </VS2013Update3>
+    <VS2013Update4>
+    </VS2013Update4>
+    <VS2013Update5>
+    </VS2013Update5>
+    <VCSExpress2013>
+    </VCSExpress2013>
+    <VBExpress2013>
+    </VBExpress2013>
+    <VWDExpress2013>
+    </VWDExpress2013>
+    <VSWinExpress2013>
+    </VSWinExpress2013>
+    <WDExpress2013>
+    </WDExpress2013>
+    <VS2012>
+    </VS2012>
+    <VS2012Update1>
+    </VS2012Update1>
+    <VS2012Update2>
+    </VS2012Update2>
+    <VS2012Update3>
+    </VS2012Update3>
+    <VS2012Update4>
+    </VS2012Update4>
+    <VCSExpress2012>
+    </VCSExpress2012>
+    <VBExpress2012>
+    </VBExpress2012>
+    <VWDExpress2012>
+    </VWDExpress2012>
+    <VSWinExpress2012>
+    </VSWinExpress2012>
+    <WDExpress2012>
+    </WDExpress2012>
+    <VPDExpress2012>
+    </VPDExpress2012>
+    <VS2010>c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe</VS2010>
+    <VCSExpress2010>
+    </VCSExpress2010>
+    <VBExpress2010>
+    </VBExpress2010>
+    <VWDExpress2010>
+    </VWDExpress2010>
+    <VS2008>
+    </VS2008>
+    <VCSExpress2008>
+    </VCSExpress2008>
+    <VBExpress2008>
+    </VBExpress2008>
+    <VWDExpress2008>
+    </VWDExpress2008>
+    <VS2005>
+    </VS2005>
+    <VCSExpress2005>
+    </VCSExpress2005>
+    <VBExpress2005>
+    </VBExpress2005>
+    <VWDExpress2005>
+    </VWDExpress2005>
+  </VSIDE>
+  <SQLServer>
+    <SQLServer2017>C:\Program Files (x86)\Microsoft SQL Server\140\</SQLServer2017>
+    <SQLServer2012>C:\Program Files (x86)\Microsoft SQL Server\110\</SQLServer2012>
+    <SQLServer2008>
+    </SQLServer2008>
+    <SQLServer2005>c:\Program Files (x86)\Microsoft SQL Server\90\</SQLServer2005>
+    <SQLServer40>C:\Program Files (x86)\Microsoft SQL Server Compact Edition\v4.0\</SQLServer40>
+    <SQLServer35>C:\Program Files (x86)\Microsoft SQL Server Compact Edition\v3.5\</SQLServer35>
+    <SQLServer31>
+    </SQLServer31>
+  </SQLServer>
+  <ASPMVC>
+    <MVC1>
+    </MVC1>
+    <MVC2>
+    </MVC2>
+    <MVC2VS2008>
+    </MVC2VS2008>
+    <MVC2VS2010>
+    </MVC2VS2010>
+    <MVC3>
+    </MVC3>
+    <MVC3VS2010>
+    </MVC3VS2010>
+    <MVC3VS2012>
+    </MVC3VS2012>
+    <MVC4>C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 4\</MVC4>
+    <MVC4VS2010>
+    </MVC4VS2010>
+    <MVC4VS2012>
+    </MVC4VS2012>
+    <MVC5>C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Visual Studio 2013\</MVC5>
+    <VS2017MVC>True</VS2017MVC>
+  </ASPMVC>
+  <Silverlight>
+    <Silverlight5>
+    </Silverlight5>
+    <Silverlight4>
+    </Silverlight4>
+    <Silverlight3>
+    </Silverlight3>
+  </Silverlight>
+  <WindowsPhone>
+    <V7.1>
+    </V7.1>
+    <V8.0>C:\Program Files (x86)\Windows Phone Kits\8.0\</V8.0>
+    <V8.1>C:\Program Files (x86)\Windows Phone Silverlight Kits\8.1\</V8.1>
+  </WindowsPhone>
+  <IIS>
+    <V8.5>
+    </V8.5>
+    <V8.0>
+    </V8.0>
+    <V7.5>
+    </V7.5>
+    <V7.0>
+    </V7.0>
+    <V6.0>
+    </V6.0>
+    <V5.1>
+    </V5.1>
+    <V10.0Ex>C:\Program Files (x86)\IIS Express\</V10.0Ex>
+    <V8.0Ex>
+    </V8.0Ex>
+    <V7.5Ex>
+    </V7.5Ex>
+    <V7.0Ex>
+    </V7.0Ex>
+    <PortNo>
+    </PortNo>
+  </IIS>
+  <MSIExec>
+    <Version>5.0.17134.1</Version>
+  </MSIExec>
+  <Browsers>
+    <IE>11.165.17134.0</IE>
+    <Firefox>
+    </Firefox>
+    <Opera>
+    </Opera>
+    <Safari>
+    </Safari>
+    <Chrome>68.0.3440.106</Chrome>
+  </Browsers>
+  <ASPServer>
+    <VS2008WebServer>
+    </VS2008WebServer>
+    <VS2010WebServer20>C:\Program Files (x86)\Common Files\Microsoft Shared\DevServer\10.0\WebDev.WebServer20.EXE</VS2010WebServer20>
+    <VS2010WebServer40>C:\Program Files (x86)\Common Files\Microsoft Shared\DevServer\10.0\WebDev.WebServer40.EXE</VS2010WebServer40>
+    <VS2012WebServer20>
+    </VS2012WebServer20>
+    <VS2012WebServer40>
+    </VS2012WebServer40>
+  </ASPServer>
+  <HttpActivation>
+    <HttpActive>C:\Windows\Microsoft.NET\Framework\v3.0\Windows Communication Foundation\</HttpActive>
+  </HttpActivation>
+  <CurrentTargetSilverlightVersion>
+  </CurrentTargetSilverlightVersion>
+  <AndroidStudio>
+    <AndroidStudio>
+    </AndroidStudio>
+    <JDK>C:\Program Files\Java\jdk1.8.0_05</JDK>
+  </AndroidStudio>
+  <AntiVirus>
+    <AntiVirusName>Avira Antivirus 15.0.36.207, Windows Defender </AntiVirusName>
+  </AntiVirus>
+  <UWP>
+    <VS2017>True</VS2017>
+  </UWP>
+</InstallInfo>

@@ -1,0 +1,249 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Lists
+@using Syncfusion.EJ2.DropDowns
+@section ControlsSection{
+    @{ var template = "<div class='list-container'><div id='icon' class=\"${$imgUrl ? \'img\' : $icon }\">" +
+                 "<span class=\"${$imgUrl ? \'hideUI\' : \'showUI\' }\">" +
+                 "${icon}</span> <img class=\"${$imgUrl ? \'showUI\' : \'hideUI\' }\" width = 45 height = 45 src=\"${$imgUrl ?  $imgUrl : \' \' }\" />" +
+                 "</div><div class='name'>${name}</div></div>";
+
+    }
+    <div class="col-lg-8  control-section">
+        <!-- ListView element -->
+        @Html.EJS().ListView("ui-list").EnableVirtualization(true).DataSource((IEnumerable<object>)ViewBag.listData).HeaderTitle("Contacts").ShowHeader(true).Height("500").Fields(new ListViewFieldSettings { Text = "name" }).Template(@template).ActionBegin("onActionBegin").ActionComplete("onActionComplete").Render()
+
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties">
+            <tbody>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Load data</div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div>
+                            @Html.EJS().DropDownList("ddl").Placeholder("Select a range").PopupHeight("200px").Index(0).DataSource(
+(IEnumerable<object>)ViewBag.ddlData).Change("onChange").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Time taken</div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div style="padding-left: 10px;padding-top: 0">
+                            <span id="time">0 ms</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the default functionalities of UI virtualization. Scroll list item to experience UI virtualization.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+        UI virtualization is an optimization technique to avoid unnecessarily constructing and rendering objects for list
+        items by loading only visible list items in a view port. This helps improve list view performance when loading a large
+        number of items. The list items are updated dynamically while users scroll the list. The virtualization can be enabled
+        by using <a href="https://ej2.syncfusion.com/documentation/list-view/api-listView.html?lang=typescript#enablevirtualization">enablevirtualization</a> API in Listview.
+    </p>
+    </div>
+}
+
+<script type="text/javascript">
+
+    var listviewInstance;
+    var dataSource = {};
+    var startTime;
+    var endTime;
+    var liElement;
+    var commonData = [
+        { name: 'Nancy', icon: 'N', id: '0', },
+        { name: 'Andrew', icon: 'A', id: '1' },
+        { name: 'Janet', icon: 'J', id: '2' },
+        { name: 'Margaret', imgUrl: '@Url.Content("~/Content/images/listview/margaret.png")', id: '3' },
+        { name: 'Steven', icon: 'S', id: '4' },
+        { name: 'Laura', imgUrl: '@Url.Content("~/Content/images/listview/laura.png")', id: '5' },
+        { name: 'Robert', icon: 'R', id: '6' },
+        { name: 'Michael', icon: 'M', id: '7' },
+        { name: 'Albert', imgUrl: '@Url.Content("~/Content/images/listview/albert.png")', id: '8' },
+        { name: 'Nolan', icon: 'N', id: '9' }
+    ];
+
+    [[1010, 'data1'], [5010, 'data5'], [10010, 'data10'], [25010, 'data25']].forEach(function (ds) {
+        var spyIndex;
+        var index;
+        var data = commonData.slice();
+        for (var i = 10; i <= ds[0]; i++) {
+            while (index === spyIndex) {
+                index = parseInt((Math.random() * 10).toString(), 10);
+            }
+            data.push({ name: data[index].name, icon: data[index].icon, imgUrl: data[index].imgUrl, id: i.toString() });
+            spyIndex = index;
+        }
+        dataSource[ds[1]] = data;
+    });
+
+    function onActionBegin() {
+        startTime = new Date();
+        listviewInstance = document.getElementById("ui-list").ej2_instances[0];
+        listviewInstance.dataSource = dataSource.data1;
+    }
+
+    function onActionComplete() {
+        endTime = new Date();
+        document.getElementById('time').innerText = (endTime.getTime() - startTime.getTime()) + ' ms';
+        liElement = document.getElementById('ui-list');
+
+        if (ej.base.Browser.isDevice) {
+            liElement.classList.add('ui-mobile');
+        }
+
+        ej.popups.createSpinner({
+            target: liElement
+        });
+    }
+
+    function onChange(e) {
+        ej.popups.showSpinner(liElement);
+        startTime = new Date();
+        listviewInstance.dataSource = dataSource['data' + e.value];
+        listviewInstance.dataBind();
+        endTime = new Date();
+        document.getElementById('time').innerText = (endTime.getTime() - startTime.getTime()) + ' ms';
+        ej.popups.hideSpinner(liElement);
+    }
+</script>
+
+<style>
+    .control-section {
+        overflow: auto;
+    }
+
+    .content-wrapper {
+        width: 52%;
+        margin: 0 auto;
+        min-width: 185px;
+    }
+
+    #time {
+        font-size: 14px;
+    }
+
+    #ui-list .e-list-header {
+        height: 50px
+    }
+
+        #ui-list .e-list-header .e-text {
+            line-height: 18px
+        }
+
+    #ui-list {
+        margin: auto;
+        max-width: 350px;
+        border: 1px solid lightgray;
+    }
+
+        #ui-list button {
+            float: right
+        }
+
+        #ui-list #icon {
+            width: 45px;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 500;
+            float: left;
+            margin-top: 6px;
+            margin-right: 35px;
+        }
+
+        #ui-list .showUI {
+            display: inline;
+        }
+
+        #ui-list .hideUI {
+            display: none;
+        }
+
+        #ui-list img {
+            border-radius: 50%;
+            border: 1px solid rgba(40, 40, 40, 0.12);
+        }
+
+    .highcontrast #ui-list img {
+        border: 1px solid rgba(255, 251, 251, 0.12);
+    }
+
+    #ui-list .R {
+        background: lightgrey;
+    }
+
+    #ui-list .M {
+        background: pink;
+    }
+
+    #ui-list .A {
+        background: lightgreen;
+    }
+
+    #ui-list .S {
+        background: lightskyblue;
+    }
+
+    #ui-list .J {
+        background: orange;
+    }
+
+    #ui-list .N {
+        background: lightblue;
+    }
+
+    .highcontrast #ui-list .e-list-item,
+    .highcontrast #ui-list .e-list-header {
+        background: rgb(0, 0, 0);
+    }
+
+        .highcontrast #ui-list .e-list-item.e-active {
+            background: #ffd939;
+            color: #000000;
+        }
+
+    #ui-list .e-list-item {
+        height: 60px;
+        border: 1px solid rgba(184, 184, 184, 0.12);
+    }
+
+    #ui-list .list-container {
+        width: inherit;
+        height: 100%;
+    }
+
+    #ui-list .content {
+        height: 100%;
+        float: left;
+    }
+
+    .name {
+        height: 100%;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 60px;
+    }
+</style>
+
+

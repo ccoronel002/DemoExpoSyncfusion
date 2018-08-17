@@ -1,0 +1,349 @@
+@using Syncfusion.EJ2;
+@using EJ2MVCSampleBrowser.Models;
+
+@section ControlsSection {
+    <div class="col-lg-8 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Diagram("diagram").Width("100%").Height("500px").Created("create").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults").DataSourceSettings(ss => ss.Id("Id").ParentId("Manager")
+.DataManager(new DataManager() { Data = (List<OrganizationalDetails>)ViewBag.Nodes })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.OrganizationalChart).GetLayoutInfo("getLayoutInfo")).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render()
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <div class="property-panel-header">
+            Properties
+        </div>
+        <div class="row" id="appearance">
+            <div class="row" style="padding-top: 10px">
+                <div class="row row-header">
+                    Orientation
+                </div>
+                <div id="orientation">
+                    <div class="row" style="padding-top: 8px">
+                        <div class="image-pattern-style  e-selected-orientation-style" id="toptobottom" style="background-image: url('Content/images/diagram/Images/common-orientation/toptobottom.png'); margin-right: 3px">
+                        </div>
+                        <div class="image-pattern-style" id="bottomtotop" style="background-image: url('Content/images/diagram/Images/common-orientation/bottomtotop.png'); margin: 0px 3px">
+                        </div>
+                        <div class="image-pattern-style" id="lefttoright" style="background-image: url('Content/images/diagram/Images/common-orientation/lefttoright.png'); margin-right:0px 3px">
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 8px">
+                        <div class="image-pattern-style" id="righttoleft" style="background-image: url('Content/images/diagram/Images/common-orientation/righttoleft.png'); margin: 0px 3px">
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-header" style="padding-top: 10px">
+                    Subtree Alignment
+                </div>
+                <div id="pattern">
+                    <div class="row" style="padding-top: 8px">
+                        <div class="image-pattern-style" id="pattern1" style="background-image: url('Content/images/diagram/patternimages/Pattern_1.png'); margin-right: 3px">
+                        </div>
+                        <div class="image-pattern-style e-selected-pattern-style" id="pattern2" style="background-image: url('Content/images/diagram/patternimages/Pattern_2.png'); margin: 0px 3px">
+                        </div>
+                        <div class="image-pattern-style" id="pattern3" style="background-image: url('Content/images/diagram/patternimages/Pattern_3.png'); margin: 0px 3px">
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 8px">
+                        <div class="image-pattern-style" id="pattern4" style="background-image: url('Content/images/diagram/patternimages/Pattern_4.png'); margin-right: 3px">
+                        </div>
+                        <div class="image-pattern-style" id="pattern5" style="background-image: url('Content/images/diagram/patternimages/Pattern_5.png'); margin: 0px 3px">
+                        </div>
+                        <div class="image-pattern-style" id="pattern6" style="background-image: url('Content/images/diagram/patternimages/Pattern_6.png'); margin: 0px 3px">
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 8px">
+                        <div class="image-pattern-style" id="pattern7" style="background-image: url('Content/images/diagram/patternimages/Pattern_7.png'); margin-right: 3px">
+                        </div>
+                        <div class="image-pattern-style" id="pattern8" style="background-image: url('Content/images/diagram/patternimages/Pattern_8.png'); margin: 0px 3px">
+                        </div>
+                        <div class="image-pattern-style" id="pattern9" style="background-image: url('Content/images/diagram/patternimages/Pattern_9.png'); margin: 0px 3px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 10px">
+            <div class="row row-header">
+                Behavior
+            </div>
+            <div class="row" style="padding-top: 8px">
+                <div style="display: table;height: 35px;" class="col-xs-6">
+                    <div style="display: table-cell; vertical-align: middle">Horizontal Spacing</div>
+                </div>
+                <div class="col-xs-6">
+                    @Html.EJS().NumericTextBox("hSpacing").Format("###.##").Width("110px").Change("hSpacingChange").Min(20).Max(60).Step(2).Value(30).Render()
+                </div>
+            </div>
+            <div class="row" style="padding-top: 8px">
+                <div style="display: table;height: 35px;" class="col-xs-6">
+                    <div style="display: table-cell; vertical-align: middle">Vertical Spacing</div>
+                </div>
+                <div class="col-xs-6">
+                    @Html.EJS().NumericTextBox("vSpacing").Format("###.##").Width("110px").Change("vSpacingChange").Min(20).Max(60).Step(2).Value(30).Render()
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #diagram {
+            display: block;
+        }
+
+        .image-pattern-style {
+            background-color: white;
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 75px;
+            width: calc((100% - 18px) / 3);
+            cursor: pointer;
+            border: 1px solid #D5D5D5;
+            background-position: center;
+            float: left;
+        }
+
+            .image-pattern-style:hover {
+                border-color: gray;
+                border-width: 2px;
+            }
+
+        .row {
+            margin-left: 0px;
+            margin-right: 0px;
+            display: block;
+        }
+
+        .row-header {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .row-header1 {
+            font-size: 12px;
+            padding-left: 2px;
+            font-weight: 400;
+        }
+
+        .property-panel-header {
+            padding-top: 2px;
+            padding-bottom: 5px;
+        }
+
+        .e-selected-orientation-style {
+            border-color: #006CE6;
+            border-width: 2px;
+        }
+
+        .e-selected-pattern-style {
+            border-color: #006CE6;
+            border-width: 2px;
+        }
+
+        .e-checkbox-wrapper .e-label {
+            font-size: 12px;
+        }
+
+        .col-xs-6 {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        function create() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
+            diagram.dataBind();
+        }
+
+        function hSpacingChange(args) {
+            var hSpacing = document.getElementById("hSpacing");
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.layout.horizontalSpacing = Number(hSpacing.value);
+            diagram.dataBind();
+        }
+
+        function vSpacingChange(args) {
+            var vSpacing = document.getElementById("vSpacing");
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.layout.verticalSpacing = Number(vSpacing.value);
+            diagram.dataBind();
+        }
+
+        var orien;
+        var typ;
+        //Click Event for orientation of the PropertyPanel.
+        document.getElementById('orientation').onclick = function (args) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            var target = args.target;
+            var selectedElement = document.getElementsByClassName('e-selected-orientation-style');
+            if (selectedElement.length) {
+                selectedElement[0].classList.remove('e-selected-orientation-style');
+            }
+            if (!target.classList.contains('e-selected-orientation-style')) {
+                target.classList.add('e-selected-orientation-style');
+            }
+            if (target.className === 'image-pattern-style e-selected-orientation-style') {
+                switch (target.id) {
+                    case 'toptobottom':
+                        diagram.layout.orientation = 'TopToBottom';
+                        break;
+                    case 'bottomtotop':
+                        diagram.layout.orientation = 'BottomToTop';
+                        break;
+                    case 'lefttoright':
+                        diagram.layout.orientation = 'LeftToRight';
+                        break;
+                    case 'righttoleft':
+                        diagram.layout.orientation = 'RightToLeft';
+                        break;
+                    default:
+                        if (selectedElement.length) {
+                            selectedElement[0].classList.remove('e-selected-orientation-style');
+                        }
+                }
+                diagram.dataBind();
+                diagram.doLayout();
+            }
+        };
+        //Click Event for pattern of the PropertyPanel.
+        document.getElementById('pattern').onclick = function (args) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            var target = args.target;
+            var selectedpatternElement = document.getElementsByClassName('e-selected-pattern-style');
+            if (selectedpatternElement.length) {
+                selectedpatternElement[0].classList.remove('e-selected-pattern-style');
+            }
+            if (!target.classList.contains('e-selected-pattern-style')) {
+                target.classList.add('e-selected-pattern-style');
+            }
+            if (target.className === 'image-pattern-style e-selected-pattern-style') {
+                switch (target.id) {
+                    case 'pattern1':
+                        orien = 'Vertical'.toString();
+                        typ = 'Alternate';
+                        break;
+                    case 'pattern2':
+                        orien = 'Vertical'.toString();
+                        typ = 'Left';
+                        break;
+                    case 'pattern3':
+                        orien = 'Vertical'.toString();
+                        typ = 'Left';
+                        break;
+                    case 'pattern4':
+                        orien = 'Vertical'.toString();
+                        typ = 'Right';
+                        break;
+                    case 'pattern5':
+                        orien = 'Vertical'.toString();
+                        typ = 'Right';
+                        break;
+                    case 'pattern6':
+                        orien = 'Horizontal'.toString();
+                        typ = 'Balanced';
+                        break;
+                    case 'pattern7':
+                        orien = 'Horizontal'.toString();
+                        typ = 'Center';
+                        break;
+                    case 'pattern8':
+                        orien = 'Horizontal'.toString();
+                        typ = 'Left';
+                        break;
+                    case 'pattern9':
+                        orien = 'Horizontal'.toString();
+                        typ = 'Right';
+                        break;
+                    default:
+                        if (selectedpatternElement.length) {
+                            selectedpatternElement[0].classList.remove('e-selected-pattern-style');
+                        }
+                }
+                diagram.layout.getLayoutInfo = function (node, options) {
+                    if (target.id === 'pattern4' || target.id === 'pattern3') {
+                        options.offset = -50;
+                    }
+                    if (orien) {
+                        getLayoutInfo1(node, options, orien, typ);
+                    }
+                };
+                diagram.dataBind();
+                diagram.doLayout();
+            }
+        };
+
+        function getLayoutInfo(node, options, orientation, type) {
+            if (node.data.Role === 'General Manager') {
+                options.assistants.push(options.children[0]);
+                options.children.splice(0, 1);
+            }
+            if (!options.hasSubTree) {
+                options.type = 'Right';
+            }
+        }
+
+        function getLayoutInfo1(node, options, orientation, type) {
+            if (node.data.Role === 'General Manager') {
+                options.assistants.push(options.children[0]);
+                options.children.splice(0, 1);
+            }
+            if (!options.hasSubTree) {
+                options.orientation = orientation;
+                options.type = type;
+            }
+        }
+
+        function nodeDefaults(obj, diagram) {
+            obj.shape = {
+                type: 'Text', content: obj.data.Role,
+                margin: { left: 10, right: 10, top: 10, bottom: 10 }
+            };
+            obj.backgroundColor = obj.data.Color;
+            obj.style = { fill: 'none', strokeColor: 'none', color: 'white' };
+            obj.expandIcon = { height: 10, width: 10, shape: 'None', fill: 'lightgray', offset: { x: .5, y: 1 } };
+            obj.expandIcon.verticalAlignment = 'Center';
+            obj.expandIcon.margin = { left: 0, right: 0, top: 0, bottom: 0 };
+            obj.collapseIcon.offset = { x: .5, y: 1 };
+            obj.collapseIcon.verticalAlignment = 'Center';
+            obj.collapseIcon.margin = { left: 0, right: 0, top: 0, bottom: 0 };
+            obj.collapseIcon.height = 10;
+            obj.collapseIcon.width = 10;
+            obj.collapseIcon.shape = 'None';
+            obj.collapseIcon.fill = 'lightgray';
+            obj.width = 120;
+            obj.height = 30;
+            return obj;
+        }
+
+        function connectorDefaults(connector, diagram) {
+            connector.targetDecorator.shape = 'None';
+            connector.type = 'Orthogonal';
+            connector.constraints = 0;
+            connector.cornerRadius = 0;
+            return connector;
+        }
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample illustrates a simple business management structure that is built from an external data source. Hierarchical tree
+        layout algorithm is used to build organizational charts. Customizing the orientation and structure of the organizational
+        chart is illustrated in this example.
+    </p>
+}
+
+@section Description{
+    <p>
+        This example shows how to generate an organizational chart from an external data source. The spacing between the objects
+        can also be customized in the chart. The
+        <code>horizontalSpacing</code> and
+        <code>verticalSpacing</code> properties of
+        <code>layout</code> can be used to customize the space between objects in a tree. The
+        <code>layoutOrientation</code> property of
+        <code>layout</code> can be used to change the orientation of the chart. The
+        <code>getLayoutInfo</code> property of
+        <code>layout</code> can be used to customize the tree structure. To change the tree structure, choose any template in the palette.
+    </p>
+    <br>
+}

@@ -1,0 +1,333 @@
+@using Syncfusion.EJ2;
+@using EJ2MVCSampleBrowser.Controllers.Diagram;
+@section ControlsSection{
+    <div class="control-section" style="width:70%;height:100%;float:left; ">
+        @Html.EJS().Diagram("diagram").Width("100%").Height("645px").CommandManager(c => c.Commands(ViewBag.commands)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).GetNodeDefaults("getNodeDefaults").ContextMenuSettings(s => s.Show(true)).Mode(Syncfusion.EJ2.Diagrams.RenderingMode.SVG).Layout(s => s.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree)).DataSourceSettings(d => d.Id("id").ParentId("ancestor").DataManager(new DataManager() { Data = new List<KeyboardInformation>(ViewBag.Nodes) })).Render()
+    </div>
+    <div class="col-lg-4 property-section" style="width:30%;height:100%;float:left;">
+        <div>
+            <h4 class="margin">Built-In Commands</h4>
+            <table id="property1" style="font-size: 12px;">
+                <tbody>
+                    <tr>
+                        <td style="width:70%;">
+                            <h5 class="commandmargin">Command</h5>
+                        </td>
+                        <td style="width:30%;">
+                            <h5 class="commandmargin">Gesture</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:70%;">Select All </td>
+                        <td style="width:30%;">Ctrl + A</td>
+                    </tr>
+                    <tr>
+                        <td style="width:70%;">Cut</td>
+                        <td style="width:30%;">Ctrl + X</td>
+                    </tr>
+                    <tr>
+                        <td style="width:70%;">Copy</td>
+                        <td style="width:30%;">Ctrl + C</td>
+                    </tr>
+                    <tr>
+                        <td style="width:70%;">Paste</td>
+                        <td style="width:30%;">Ctrl + V</td>
+                    </tr>
+                    <tr>
+                        <td style="width:70%;">Undo</td>
+                        <td style="width:30%;">Ctrl + Z</td>
+                    </tr>
+                    <tr>
+                        <td style="width:70%;">Redo</td>
+                        <td style="width:30%;">Ctrl + Y</td>
+                    </tr>
+                    <tr>
+                        <td style="width:70%;">Delete</td>
+                        <td style="width:30%;">Delete</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 class="margin">Custom Commands</h4>
+            <table id="property2" style="font-size: 12px;">
+                <tbody>
+                    <tr>
+                        <td style="width:70%;">
+                            <h5 class="commandmargin">
+                                Command
+                            </h5>
+                        </td>
+                        <td style="width:30%;">
+                            <h5 class="commandmargin">Gesture</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:70%;">Group</td>
+                        <td style="width:30%;">Ctrl + G</td>
+                    </tr>
+                    <tr>
+                        <td style="width:70%;">Ungroup</td>
+                        <td style="width:30%;">Ctrl + U</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 class="margin">Modified Commands</h4>
+            <table id="property3" style="font-size: 12px;">
+                <tbody>
+                    <tr>
+                        <td style="width:70%;">
+                            <h5 class="commandmargin">
+                                Command
+                            </h5>
+                        </td>
+                        <td style="width:30%;">
+                            <h5 class="commandmargin">Gesture</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:60%;">Navigate to Parent Node </td>
+                        <td style="width:40%;">Up Arrow</td>
+                    </tr>
+                    <tr>
+                        <td style="width:60%;">Navigate to Child Node </td>
+                        <td style="width:40%;">Down Arrow</td>
+                    </tr>
+                    <tr>
+                        <td style="width:60%;">Navigate to Previous Child </td>
+                        <td style="width:40%;">Left Arrow</td>
+                    </tr>
+                    <tr>
+                        <td style="width:60%;">Navigate to Next Child </td>
+                        <td style="width:40%;">Right Arrow</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <style>
+        h4.margin {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        h5.commandmargin {
+            margin-top: 10px;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function getNodeDefaults(obj) {
+            if (!obj.children) {
+                obj.shape = { type: 'Basic', shape: 'Ellipse', cornerRadius: 10 };
+                obj.width = 70;
+                obj.height = 70;
+            }
+            if (obj.data) {
+                obj.annotations = [{
+                    /* tslint:disable:no-string-literal */
+                    content: obj.data.id,
+                    style: { color: 'white' }
+                }
+                ];
+
+                obj.style = {
+                    strokeColor: 'transparent',
+                    /* tslint:disable:no-string-literal */
+                    fill: obj.data.fillcolor
+                };
+            }
+            return obj;
+        }
+
+        function CanExecutegrouping() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            if (diagram.selectedItems.nodes.length > 0 || diagram.selectedItems.connectors.length > 0) {
+                return true;
+            }
+            return false;
+        }
+
+        function Executegrouping() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.group();
+        }
+
+
+        function CanExecuteungrouping() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            if (diagram.selectedItems.nodes[0].children) {
+                return true;
+            }
+            return false;
+        }
+
+        function Executeungrouping() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.unGroup();
+        }
+
+
+        function CanExecutenavigationdown() {
+            return true;
+        }
+
+        function Executenavigationdown() {
+            navigateToChild();
+        }
+
+
+        function CanExecutenavigationup() {
+            return true;
+        }
+
+        function Executenavigationup() {
+            navigateToParent();
+        }
+
+
+        function CanExecutenavigationleft() {
+            return true;
+        }
+
+        function Executenavigationleft() {
+            navigateToLeftSibling();
+        }
+
+        function CanExecutenavigationright() {
+            return true;
+        }
+
+        function Executenavigationright() {
+            navigateToRightSibling();
+        }
+
+
+        function navigateToChild() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            var parent = diagram.selectedItems.nodes[0];
+            var connectorId = parent.outEdges[0];
+            var child = getChildNode(connectorId);
+            if (child && child.length > 0) {
+                diagram.clearSelection();
+                diagram.select(child);
+            }
+        }
+        function navigateToParent() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            var child = diagram.selectedItems.nodes[0];
+            var connectorId = child.inEdges[0];
+            var parent = getParentNode(connectorId);
+            if (parent && parent.length > 0) {
+                diagram.clearSelection();
+                diagram.select(parent);
+            }
+        }
+
+        function navigateToRightSibling() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            var child = diagram.selectedItems.nodes[0];
+            var connectorId = child.inEdges[0];
+            var nextConnectorId;
+            var parent = getParentNode(connectorId);
+            if (parent && parent.length > 0) {
+                for (var i = 0; i < parent[0].outEdges.length; i++) {
+                    if (parent[0].outEdges[i] === connectorId) {
+                        nextConnectorId = parent[0].outEdges[i + 1];
+                    }
+                }
+                var rightSibling = getChildNode(nextConnectorId);
+                if (rightSibling && rightSibling.length > 0) {
+                    diagram.clearSelection();
+                    diagram.select(rightSibling);
+                }
+            }
+        }
+        function navigateToLeftSibling() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            var child = diagram.selectedItems.nodes[0];
+            var connectorId = child.inEdges[0];
+            var prevConnectorId;
+            var parent = getParentNode(connectorId);
+            if (parent && parent.length > 0) {
+                for (var i = 0; i < parent[0].outEdges.length; i++) {
+                    if (parent[0].outEdges[i] === connectorId) {
+                        prevConnectorId = parent[0].outEdges[i - 1];
+                    }
+                }
+                var leftSibling = getChildNode(prevConnectorId);
+                if (leftSibling && leftSibling.length > 0) {
+                    diagram.clearSelection();
+                    diagram.select(leftSibling);
+                }
+            }
+        }
+        function getChildNode(name) {
+            var childNode = [];
+            var connector = getObject(name);
+            if (connector) {
+                childNode.push(getObject(connector.targetID));
+            }
+            return childNode;
+        }
+        function getParentNode(name) {
+            var parentNode = [];
+            var connector = getObject(name);
+            if (connector) {
+                parentNode.push(getObject(connector.sourceID));
+            }
+            return parentNode;
+        }
+        function getObject(name) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            return diagram.getObject(name);
+        }
+    </script>
+
+
+
+    <style>
+        #diagram {
+            display: block;
+        }
+
+        .row {
+            display: block;
+        }
+
+        .control-section {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+        .container-fluid {
+            padding-left: 0px;
+        }
+    </style>
+}
+
+@section ActionDescription{
+    <p>
+        This sample illustrates interaction with diagram control using shortcut keys. Command Manager support is used to manage keyboard interactions.
+    </p>
+}
+
+@section Description{
+    <p>
+        This example shows how to interact with the diagram control using shortcut keys. The
+        <code>commandManager</code> property can be used to map the commands with key gestures. In this example, along with the built-in commands a
+        few custom commands are added and a few built-in commands (nudge) are overridden. That is, when the arrow keys are
+        pressed, selection will be navigated instead of moving the selected objects. The different kinds of interactions
+        and the corresponding key gestures are listed in the property panel.
+    </p>
+    <br>
+}
+
